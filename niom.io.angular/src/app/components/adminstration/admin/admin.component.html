@@ -1,0 +1,20 @@
+<section id="top-bar">
+  <img id="site-logo" src='../../../assets/img/niom_sharp.png'>
+  <img id="triple-stack-menu" src='../../../../assets/img/round-menu-black-36/1x/round_menu_black_36dp.png'/>
+</section>
+<section id="side-bar">
+  <ul>
+    <li>
+      <h4>Users</h4>
+    </li>
+    <li>
+      <h4>Pages</h4>
+    </li>
+    <li (click)="this.appComponent.logout()">
+    <h4>Logout</h4>
+    </li>
+  </ul>
+</section>
+<section id="content-container">
+  <router-outlet></router-outlet>
+</section>

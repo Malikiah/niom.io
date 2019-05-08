@@ -1,0 +1,35 @@
+{
+  "name": "Nymadic_MEAN_Stack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon dist/server.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"yello.bold, cyan.bold\" \"npm run watch-ts\" \"npm run watch-node\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.16.1",
+    "@types/jsonwebtoken": "^8.3.0",
+    "@types/mongodb": "^3.1.19",
+    "@types/shelljs": "^0.8.2",
+    "bcryptjs": "^2.4.3",
+    "http": "0.0.0",
+    "jsonwebtoken": "^8.4.0",
+    "leaflet": "^1.4.0",
+    "mongodb": "^3.2.3",
+    "nodemailer": "^6.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "shelljs": "^0.8.3"
+  }
+}

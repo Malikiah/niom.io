@@ -1,0 +1,8 @@
+<form id="contact-form" #contactForm="ngForm" (ngSubmit)="this.userService.contactEmail(contactForm)">
+  <h1>Contact Us</h1>
+  <input type="text" name="email" placeholder="Email Address" ngModel required #email="ngModel"><input name="subject" type="text" placeholder="Subject" ngModel required #subject="ngModel">
+  <textarea name="body" ngModel required #body="ngModel"> 
+
+  </textarea>
+  <input type="submit" value="Send">
+</form>

@@ -1,0 +1,193 @@
+/*
+  dark grey = rgb(48, 48, 48)
+  light green = rgb(104, 160, 99)
+  dark green = rgb(60, 135, 58)
+  grey = rgb(200, 200, 200)
+  blue = rgb(0, 178, 190)
+  beige = rgb(240, 240, 240)
+*/
+
+@font-face {
+    font-family: Code;
+    src: url(./assets/font/code/CODE_Light.otf);
+}
+@font-face {
+font-family: Roboto;
+src: url(./assets/font/roboto/Roboto-Light.ttf);
+}
+@font-face {
+font-family: ModernSans;
+src: url(./assets/font/modern_sans/ModernSans-Light.otf);
+}
+
+html, body {
+    margin: 0; padding: 0;
+    font-family: ModernSans;
+    overflow-x: hidden;
+}
+
+/* ----- App ----- */
+app-root { 
+    height: 100vh; width: 100vw;
+    overflow-x: hidden; overflow-y: scroll;
+
+}
+
+app-main {
+    display: grid;
+    height: 100vh; width: 100vw;
+    grid-template-rows: 1fr 60px;
+}
+
+app-admin {
+    display: grid;
+    height: 100vh; width: 100vw;
+    grid-template-rows: 60px 1fr; grid-template-columns: 300px 1fr;
+}
+
+/* ----- Global Elements ----- */
+
+h1 {
+    margin: 0 0 30px 0; padding: 0;
+    font-weight: normal;
+    font-size: 50px;
+    text-align: center;
+}
+
+h2 {
+    margin: 0; padding: 0;
+    font-weight: normal;
+    font-size: 30px;
+}
+
+h3 {
+    margin: 0; padding: 0;
+    font-weight: normal;
+    font-size: 25px;
+}
+
+h4 {
+    margin: 0; padding: 0;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+
+h6 {
+    margin: 0; padding: 0;
+    font-weight: normal;
+    font-size: 18px;
+    color: rgb(100, 100, 100);
+}
+
+p {
+    margin: 0; padding: 0 5px 0 5px;
+    color: rgb(100, 100, 100);
+}
+
+ul {
+    margin: 0; padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0; padding: 0;
+}
+
+td {
+    border-collapse: separate;
+    padding: 0 0 0 10px;
+    border-right: 1px solid rgb(200, 200, 200);
+}
+
+input[type=text], input[type=password] {
+    transition: .2s;
+    line-height: 40px; width: 400px;
+    margin: 5px 0 5px 0; padding: 0 0 0 10px;
+    background: rgb(255, 255, 255);
+    border:none;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    
+} 
+
+input[type=text]:hover, input[type=text]:focus, input[type=password]:hover, input[type=password]:focus { 
+    border: 1px solid rgb(48, 48, 48);
+}
+
+input[type=text]::placeholder, input[type=password]::placeholder { color: rgb(150, 150, 150); }
+
+input[type=submit], input[type=button] {
+    cursor: pointer;
+    transition: .2s;
+    height: 40px; width: 100px;
+    margin: 15px 0 5px 0; padding: 0;
+    background: rgb(48, 48, 48);
+    border: none;
+    border-radius: 10px;
+    color: white;
+} 
+
+input[type=submit]:hover, input[type=button]:hover { color: rgb(0, 178, 190); }
+
+label { 
+    color: rgb(160, 160, 160);
+    font-size: 14px;
+}
+
+/* ----- Global Classes ----- */
+
+.content-margin {
+    display: grid;
+    grid-row: 1/2; grid-column: 1/6;
+    padding: 100px 20% 100px 20%;
+}
+.wide-content-margin {
+    position: relative;
+    display: grid;
+    grid-row: 1/2; grid-column: 1/6;
+    padding: 100px 10% 100px 10%;
+}
+
+.background {
+    position: fixed;
+    height: 100vh; width: 100vw;
+    background: rgb(48, 48, 48);
+}
+
+
+.table-header {
+    background: rgb(240, 240, 240);
+}
+
+/* ----- Media Queries ----- */
+
+@media(max-width: 1500px) {
+    .content-margin { display: grid; }
+    .wide-content-margin { display: grid; grid-column: 1/6; padding: 100px 12px 100px 12px; }
+}
+  
+@media(max-width: 650px) {
+
+    .content-margin { display: grid; grid-column: 1/6; padding: 100px 12px 100px 12px; }
+    .wide-content-margin { display: grid; grid-column: 1/6; padding: 100px 12px 100px 12px; }
+}
+
+@media( max-width: 450px ) {
+    input[type=text], input[type=password] { width: 300px; }
+}
+
+@keyframes arrow_bounce {
+    0% { bottom: 0px; }
+    40% { bottom: -5px; }
+    50% { bottom: 0px; }
+    65% { bottom: -5px; }
+    75% { bottom: 0px; }
+    85% { bottom: -5px;  }
+    100% { bottom: 0px;  } 
+}

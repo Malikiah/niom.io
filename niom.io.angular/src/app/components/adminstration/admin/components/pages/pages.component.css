@@ -1,0 +1,11 @@
+tr {
+    line-height: 40px; 
+}
+tr:first-child td:first-child {
+    border-top-left-radius: 10px;
+}
+
+tr td:last-child {
+    border-right: none;
+    border-top-right-radius: 30px;
+}

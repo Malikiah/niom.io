@@ -1,0 +1,50 @@
+h2 {
+    border-bottom: 2px solid rgb(0, 178, 190);
+    width: fit-content;
+    cursor: pointer;
+}
+
+p {
+    padding: 20px 0 20px 10px;
+}
+
+.services-arrow {
+    position: relative;
+    top: 15px;
+    transition: .3s;
+    filter: invert(100%);
+    
+    pointer-events: none;
+}
+
+.rotate {
+    transform: rotateZ(-180deg);
+}
+
+.services-information {
+    display: none;
+    transition: .3s;
+    border-left: 1px solid rgb(200, 200, 200);
+    margin: 50px 50px 50px 50px; padding: 10px 0 10px 20px;
+    overflow: hidden;
+    height: 0px;
+
+}
+
+.open {
+    display: block;
+    height: fit-content !important;
+}
+
+.packages {
+    padding: 0 0 20px 0;
+}
+
+.packages:nth-child(4) {
+    padding: 0;
+}
+
+input[type="submit"] {
+    display: block;
+    margin-right: 0;
+}

@@ -1,0 +1,152 @@
+
+#site-logo {
+    position: absolute;
+    display: block;
+    top: 50px; left: 20%;
+    padding-right: 20px;
+    height: 60px;
+   
+}
+#site-logo img { 
+    display: block;
+    filter: invert(100%);
+    height: 41px; width: 163px;
+    margin: auto auto;
+    cursor: pointer;
+}
+
+
+#navigation-menu {
+    position: absolute;
+    top: 50px; right: 20%;
+ }
+#navigation-menu li {
+    transition: .3s;
+    display: inline-block;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+ }
+
+#navigation-menu li:hover {
+    color: rgb(0, 178, 190);
+}
+
+#triple-stack-menu {
+    display: none;
+    filter: invert(100%);
+    position: absolute;
+    top: 50px; right: 50px;
+    cursor: pointer;
+}
+
+/* ----- Banner ----- */ 
+#banner {
+    display: grid;
+    position: relative;
+    height: 100vh;
+    background: url('../../../assets/img/nebula_galaxy_wallpaper_014.jpg');
+
+
+}
+#banner-arrow {
+    position: absolute;
+    bottom: 0; right: 50%;
+
+    transform: translate(50%, 0);
+    animation: arrow_bounce 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+#banner h1 {
+    position: absolute;
+    font-family: Code;
+    font-weight: unset;
+    top: 40%; left: 50%;
+    transform: translate(-50%, 0);
+    color: white;
+}
+
+/* ----- Content ----- */
+
+#content-container {
+    display: block;
+}
+
+app-services {
+    background: rgb(245, 245, 245);
+}
+
+app-about {
+    background: rgb(245, 245, 245);
+}
+
+
+ /* ----- Footer ----- */
+#footer {
+    position: relative;
+    display: block;
+    height: 100px; width: 100vw;
+    grid-row: 2/3;
+    background: rgb(48, 48, 48);
+    color: white;
+ }
+
+ #footer-social {
+    position: relative;
+    display: block;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    filter: invert(100%);
+ }
+
+#footer-social li {
+    transition: .3s;
+    display: inline-block;
+    padding: 0 10px 0 10px;
+}
+#footer-social li img {
+    transition: .3s;
+}
+
+#footer-social li img:hover {
+    cursor: pointer;
+    filter: invert(20%);
+}
+
+#footer-copyright {
+    position: absolute;
+    left: 50%;bottom: 0;
+    transform: translate(-50%, 0%);
+}
+ 
+ /* ----- Media Queries ----- */
+
+ @media(max-width: 1200px) {
+    #site-logo {
+        left: 10%;
+    }
+    #site-logo img { 
+        height: 34px; width: 136px; 
+    }
+    #navigation-menu {
+    right: 10%;
+    }
+    
+}
+
+
+@media(max-width: 650px) {
+    #site-logo {
+        left: 50px;
+    }
+    #navigation-menu {
+        display: none;
+    }
+    #triple-stack-menu {
+        display: block;
+    }
+
+}
