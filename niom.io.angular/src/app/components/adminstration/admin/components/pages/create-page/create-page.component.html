@@ -1,0 +1,29 @@
+<section class="content-margin">
+  <form id="create-page-form" #createPageForm="ngForm" (ngSubmit)="this.userService.contactEmail(create-pageForm)">
+    <section id="new-page-header">
+      <h1>New Page</h1>
+
+      <label>Select Type</label><br/>
+        <select id="pageType" name="type" ngModel required #subject="ngModel"> 
+            <option value="post" selected>post</option> 
+            <option value="portfolio">portfolio</option> 
+        </select><br/>
+        <br/>
+        <label>Title</label><br/>
+        <input id="title" type="text" name="title" placeholder="Title" ngModel required #title="ngModel">
+
+    </section>
+
+    <section  id="portfolio-type" *ngIf="pageType != 'portfolio';else portfolio">
+        <textarea name="body" ngModel required #body="ngModel"> </textarea>
+    </section>
+    
+
+    <ng-template #portfolio>
+        <input name="client_id" type="text" placeholder="client_id"/>
+        <input name="site-url" type="text" placeholder="site URL"/>
+    </ng-template>
+
+    <input type="submit" value="Create">
+  </form>
+</section>

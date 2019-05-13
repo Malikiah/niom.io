@@ -18,7 +18,7 @@ class App {
         this.app.use(bodyParser.urlencoded({ extended: true }));
         // Cross Origin Resource Sharing
         this.app.use(cors({
-            origin: ['http://nymadic.com', 'http://localhost:4200'],
+            origin: ['http://localhost:4200'],
         }));
     }
 }

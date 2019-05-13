@@ -5,7 +5,7 @@ const userService = new services_1.UserService(new services_1.DatabaseService())
 exports.AuthRouter = (app) => {
     app.get('/authenticate', (req, res, next) => {
         new Promise((resolve, reject) => {
-            userService.checkJWT(resolve, req, res, next);
+            userService.checkJWT(req, res, next, resolve);
         })
             .then((decodedJWT) => {
             res.status(200).send(decodedJWT);

@@ -1,0 +1,32 @@
+#new-page-header {
+    margin: 0 0 50px 0;
+    
+}
+
+
+input[type="text"]:nth-child(2) {
+    margin-bottom: 20px ;
+}
+
+textarea { 
+    position: relative;
+    display: block;
+    transition: .2s;
+    min-height: 400px; width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 10px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    resize: vertical;
+    margin: auto auto;
+}
+
+textarea:hover, textarea:focus {
+    border: 1px solid rgb(52, 52, 52);
+    background: rgb(255, 255, 255);
+ }
+
+
+input[type="submit"] { display: block; margin: 30px auto 0 auto; }
+

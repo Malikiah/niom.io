@@ -9,7 +9,11 @@ const dbName = 'niom';
 
 export class DatabaseService { 
     
-    find(resolve: any, collection: string, criteria: string, criteriaValue: string) {
+    constructor() {
+
+    }
+
+    find(resolve?: any, collection?: string, criteria?: string, criteriaValue?: string) {
       
       MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
             
@@ -35,6 +39,7 @@ export class DatabaseService {
             }
         })
     }
+
 
     insert(collection: string, data: string) {
         

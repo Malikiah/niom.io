@@ -23,6 +23,8 @@ import {
 import { LoadingComponent } from './components/loading/loading.component';
 import { UsersComponent } from './components/adminstration/admin/components/users/users.component';
 import { PagesComponent } from './components/adminstration/admin/components/pages/pages.component';
+import { CreatePageComponent } from './components/adminstration/admin/components/pages/create-page/create-page.component';
+import { CreateUserComponent } from './components/adminstration/admin/components/users/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { PagesComponent } from './components/adminstration/admin/components/page
     AdminComponent,
     LoadingComponent,
     UsersComponent,
-    PagesComponent
+    PagesComponent,
+    CreatePageComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

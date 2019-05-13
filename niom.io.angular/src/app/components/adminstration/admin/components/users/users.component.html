@@ -1,3 +1,20 @@
-<p>
-  users works!
-</p>
+
+<section class="wide-content-margin">
+  
+  <div><input type="text"/><input type="submit" value="Create" routerLink="/admin/users/create-user"/></div>
+  
+  <table class="admin-table-list">
+    <tr class="table-header">
+      <td>id</td>
+      <td>name</td>
+      <td>email address</td>
+      <td>privilege</td>
+    </tr>
+    <tr *ngFor="let user of users" class="table-content">
+      <td>{{user._id}}</td>
+      <td>{{user.firstName}} {{user.lastName}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.role}}</td>
+    </tr>
+  </table>
+</section>

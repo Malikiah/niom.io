@@ -3,9 +3,10 @@
     position: absolute;
     top: 10%; right: 50%;
     transform: translate(50%, 0);
-    line-height: 60px; min-width: 300px; width: fit-content;
-    background: rgb(0, 178, 190, .8);
-    border-radius: 10px;
+    line-height: 40px; min-width: 300px; width: fit-content;
+    background: black;
+    border-radius: 3px;
     text-align: center;
     z-index: 10;
+    color: white;
 }

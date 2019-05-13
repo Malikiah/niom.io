@@ -6,7 +6,9 @@ import {
   LoginComponent,
   AdminComponent,
   UsersComponent,
+  CreateUserComponent,
   PagesComponent,
+  CreatePageComponent
 } from './components/index';
 
 import {
@@ -22,8 +24,10 @@ const routes: Routes = [
     AdminGuardService,
   ],
     children: [
-      { path: 'users', component: UsersComponent  },
-      { path: 'pages', component: PagesComponent  }
+      { path: 'users', component: UsersComponent },
+      { path: 'pages', component: PagesComponent },
+      { path: 'users/create-user', component: CreateUserComponent },
+      { path: 'pages/create-page', component: CreatePageComponent }
     ]
   }
 

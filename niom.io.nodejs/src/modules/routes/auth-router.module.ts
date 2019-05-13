@@ -9,19 +9,15 @@ const userService: UserService = new UserService(new DatabaseService());
 export const AuthRouter = (app: express.Application) => { 
 
     app.get('/authenticate', (req: Request, res: Response, next: NextFunction) => {
+        
         new Promise((resolve, reject) => {
-            userService.checkJWT(resolve,req, res, next);
+            userService.checkJWT(req, res, next, resolve);
         })
         .then(
             (decodedJWT: UserInterface) => { 
                 res.status(200).send(decodedJWT);
              }
         )
-        
-        
-        
-
-        
     })
 
     

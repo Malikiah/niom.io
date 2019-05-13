@@ -1,0 +1,39 @@
+#create-form { 
+    display: block;
+    margin: auto auto;
+}
+
+#create-form ul {
+    margin: 10px;
+}
+#create-form li {
+    padding: 5px 0 5px 0;
+}
+
+#create-form input[type=submit] {
+    display: block;
+    margin: 0  0;
+    text-align: center;
+}
+
+#create-fullname input[type=text] {
+    width: 192.5px;
+} #create-form input[type=text]:nth-child(3) {
+    margin-right: 5px;
+}
+
+#create-form input[type=password]{
+    width: 192.5px;
+} #create-form ul input[type=password]:nth-child(3) {
+    margin-right: 5px;
+}
+
+#create-button-wrapper {
+    margin: 10px 0 0 0;
+}
+
+#create-button {
+    display: block;
+    float: left;
+    
+ }

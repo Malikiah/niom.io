@@ -6,6 +6,7 @@ import { DNSController, IpDataInterface } from '../../controllers/dns.controller
 import { UserService, DatabaseService } from '../../services';
 import { AuthRouter } from './auth-router.module';
 import { UserInterface } from "../../dependencies";
+import { AdminRouter } from "./admin-router.module";
 
 
 
@@ -16,45 +17,20 @@ const databaseService: DatabaseService = new DatabaseService();
 export const MainRouter = (app: express.Application ) => {
     
     AuthRouter(app);
+    AdminRouter(app);
     
     app.get('/', (req: Request, res: Response, next: NextFunction) => {
-        
-    });
-    
-    app.get('/ip-info', (req: Request, res: Response, next: NextFunction) => {
-
-        new Promise((resolve, reject) => {
-            dnsController.getIpData(resolve, req);
-        })
-        .then(
-            (data: IpDataInterface) => { res.status(200).send(data); }
-        )
-        .catch((err) => { res.status(500).send(); })
         
     });
 
     app.post('/login', (req: Request, res: Response, next: NextFunction) => {
         
-        const options = {
-            host: 'google.com',
-            port: 80,
-            path: '/recaptcha/api/siteverify?secret=6LfDuqAUAAAAAILGf4cJYMN_9e8_kwS951Yz3gZX&response='+ req.headers.ReCaptcha
-        }
-        http.request(options, function(res){
-            
-            res.on('data', (chunk) =>{
-              console.log('It was: ' + chunk);
-            });
-          }).on("error", (err) => {
-            console.log("Got error: " + err.message);
-          });
-
         userService.authenticateUser(res, req.body);
 
     });
 
     app.post('/register', (req: Request, res: Response, next: NextFunction) => {
-        
+
         userService.registerUser(req, res);
 
     });
@@ -64,16 +40,15 @@ export const MainRouter = (app: express.Application ) => {
         new Promise((resolve, reject) => {
 
             new Promise((resolve, reject) => { 
-                userService.checkJWT(resolve, req, res, next); 
+                userService.checkJWT(req, res, next, resolve); 
             })
             .then((decodedJWT: UserInterface) => {
-                console.log(decodedJWT._id)
                 databaseService.find(resolve, 'users', '_id', decodedJWT._id);
             })
             
         })
         .then(
-            (profile: UserInterface) => { console.log(profile); res.status(200).send(profile); }
+            (profile: UserInterface) => { res.status(200).send(profile); }
         )
         .catch((err) => { res.status(500).send(); })
         
@@ -83,13 +58,6 @@ export const MainRouter = (app: express.Application ) => {
     app.post('/contact', (req: Request, res: Response, next: NextFunction) => {
         
 
-    })
+    });
 
-    function checkRecaptcha( key?: string ) {
-        
-        app.get('https://www.google.com/recaptcha/api/siteverify?secret=6LfDuqAUAAAAAILGf4cJYMN_9e8_kwS951Yz3gZX&response=' + key,
-        (req: Request, res: Response, next: NextFunction) => {
-            console.log(res);
-        })
-    }
 }

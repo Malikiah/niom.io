@@ -23,14 +23,12 @@ export class UserService {
     
  
     authenticateUser = (res: any, loginData: UserInterface) => {
-        console.log('running');
-        console.log(loginData);
         new Promise((resolve, reject) => {
             this.databaseService.find(resolve, 'users', 'email', loginData.email)
         })
         .then(
             (userData: UserInterface) => {
-                console.log(userData);
+
                 
                 if( userData.email === loginData.email && bcrypt.compareSync(loginData.password, userData.password)) { 
                     //then send a jwt to the user that will be saved locally
@@ -57,18 +55,16 @@ export class UserService {
         req.body.password = bcrypt.hashSync(req.body.password, salt);
         req.body.role = 'user';
 
-        console.log(req.body);
-
         new Promise((resolve, reject) => {
             this.databaseService.find(resolve, 'users', 'email', req.body.email);
         })
         .then(
             (userData: UserInterface) => {
-                console.log(userData);
+
                 if(!userData) {
-                    console.log(userData);
+
                     this.databaseService.insert('users', req.body);
-                    console.log('here');
+
                     res.status(201).send();
                     
                 } 
@@ -81,15 +77,15 @@ export class UserService {
                     res.status(409).send()
                 }
             }
-        ) .catch((err) => { res.status(500).send(); console.log(err); })
+        ) .catch((err) => { res.status(500).send(); })
         
     }
 
-    checkJWT(resolve: any, req: Request, res: Response, next: NextFunction) {
+    checkJWT(req: Request, res: Response, next: NextFunction, resolve?: any) {
         jwt.verify(req.headers.authorization, 'shhhhh', (err, decoded: UserInterface) => {
             if(decoded) {
                 resolve( decoded );
-            } else { res.status(403).send(); }
+            } else { res.status(401).send(); }
             });
     }
 

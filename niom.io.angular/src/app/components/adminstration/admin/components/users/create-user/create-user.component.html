@@ -1,0 +1,34 @@
+
+<section class="content-margin">
+    <h1>New User</h1>
+  <form id="create-form" #createForm="ngForm" (ngSubmit)="this.userService.registerUser(createForm)">
+    
+    <ul>
+      <li>
+        <label>Email Address</label><br/>
+        <input name="email" type="text" placeholder="Email Address..." ngModel required #email="ngModel"/>
+      </li>
+      <li>
+          <label>Username</label><br/>
+          <input name="userName" type="text" placeholder="Username..." ngModel required #userName="ngModel"/>
+        </li>
+      <li id="create-fullname">
+          <label>Full Name</label> <br/>
+          <input name="firstName" type="text" placeholder="First Name..." ngModel required #firstName="ngModel"/> 
+          <input name="lastName" type="text" placeholder="Last Name..." ngModel required #lastName="ngModel"/>
+        </li>
+      <li>
+        <label>Password</label> <br/>
+        <input name="password" type="password" placeholder="Password..." ngModel required #password="ngModel"/> 
+        <input name="confirmPassword" type="Password" placeholder="Re-Type Password..." ngModel required #confirmPassword="ngModel"/>
+      </li>
+      <li>
+        <select name="privilege">
+          <option value="user" selected>user</option>
+          <option value="admin">administrator</option>
+        </select>
+      </li>
+      <li id="create-button-wrapper"><input id="create-button"type="submit" value="create"/></li>
+    </ul>
+  </form>
+</section>

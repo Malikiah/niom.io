@@ -9,13 +9,10 @@ class UserService {
     constructor(databaseService) {
         this.databaseService = databaseService;
         this.authenticateUser = (res, loginData) => {
-            console.log('running');
-            console.log(loginData);
             new Promise((resolve, reject) => {
                 this.databaseService.find(resolve, 'users', 'email', loginData.email);
             })
                 .then((userData) => {
-                console.log(userData);
                 if (userData.email === loginData.email && bcrypt.compareSync(loginData.password, userData.password)) {
                     //then send a jwt to the user that will be saved locally
                     const token = jwt.sign({ '_id': userData._id, 'role': userData.role }, 'shhhhh', { expiresIn: 60 * 60 });
@@ -38,16 +35,12 @@ class UserService {
         delete req.body.recaptcha;
         req.body.password = bcrypt.hashSync(req.body.password, salt);
         req.body.role = 'user';
-        console.log(req.body);
         new Promise((resolve, reject) => {
             this.databaseService.find(resolve, 'users', 'email', req.body.email);
         })
             .then((userData) => {
-            console.log(userData);
             if (!userData) {
-                console.log(userData);
                 this.databaseService.insert('users', req.body);
-                console.log('here');
                 res.status(201).send();
             }
             else if (userData.email === req.body.email) {
@@ -58,15 +51,15 @@ class UserService {
                 res.statusMessage = "Username Is Taken";
                 res.status(409).send();
             }
-        }).catch((err) => { res.status(500).send(); console.log(err); });
+        }).catch((err) => { res.status(500).send(); });
     }
-    checkJWT(resolve, req, res, next) {
+    checkJWT(req, res, next, resolve) {
         jwt.verify(req.headers.authorization, 'shhhhh', (err, decoded) => {
             if (decoded) {
                 resolve(decoded);
             }
             else {
-                res.status(403).send();
+                res.status(401).send();
             }
         });
     }

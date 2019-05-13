@@ -6,6 +6,8 @@ const mongodb_1 = require("mongodb");
 const url = 'mongodb://localhost:27017';
 const dbName = 'niom';
 class DatabaseService {
+    constructor() {
+    }
     find(resolve, collection, criteria, criteriaValue) {
         MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
             const db = client.db(dbName);
