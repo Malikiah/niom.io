@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const request = require("request");
 const dns_controller_1 = require("../../controllers/dns.controller");
 const services_1 = require("../../services");
 const auth_router_module_1 = require("./auth-router.module");
@@ -31,6 +32,18 @@ exports.MainRouter = (app) => {
             .catch((err) => { res.status(500).send(); });
     });
     app.post('/contact', (req, res, next) => {
+    });
+    app.get('/portfolio', (req, res, next) => {
+        new Promise((resolve, reject) => {
+            databaseService.find(resolve, 'pages', 'type', 'portfolio', true);
+        })
+            .then((portfolio) => {
+            portfolio.forEach((dataPoint) => {
+                request.post({ url: 'https://api.instagram.com/v1/users/self/?access_token=' + dataPoint.accessToken }, (err, res, body) => {
+                    console.log(res.body);
+                });
+            });
+        }).catch((err) => { res.status(500).send(); });
     });
 };
 //# sourceMappingURL=main-router.module.js.map

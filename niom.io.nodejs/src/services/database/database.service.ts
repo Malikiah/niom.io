@@ -2,6 +2,7 @@ import * as MongoClient from 'mongodb';
 import { ObjectId } from 'mongodb';
 
 import { DataInterface } from '../../dependencies/index'
+import { resolve } from 'dns';
 
 // MongoDB Connection URL
 const url = 'mongodb://localhost:27017';
@@ -13,41 +14,49 @@ export class DatabaseService {
 
     }
 
-    find(resolve?: any, collection?: string, criteria?: string, criteriaValue?: string) {
+    find(resolve?: any, collection?: string, criteria?: string, criteriaValue?: string, findAll?: boolean) {
       
       MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
-            
+            if (err) { 
+               return err;
+             }
+
             const db: MongoClient.Db = client.db(dbName);
             
             if(criteria === '_id') {
                 db.collection(collection).findOne({ '_id': new ObjectId(criteriaValue) }, ( err, collectionData: any ) => {
-                    console.log(collectionData)
                     resolve(collectionData);
                 })
             }
             else if(!criteria) { 
                 db.collection(collection).find().toArray(( err, collectionData: any ) => {
-                    console.log('collection');
-                    console.log(collectionData);
                     resolve(collectionData);
                     })
+            }
+            else if(findAll) {
+                db.collection(collection).find({ [criteria]: criteriaValue }).toArray(( err, collectionData: any ) => {
+                    resolve(collectionData); 
+                })
             }
             else { 
                 db.collection(collection).findOne({ [criteria]: criteriaValue }, ( err, collectionData: any ) => {
                     resolve(collectionData); 
                 })
             }
-        })
+        }) 
     }
 
 
-    insert(collection: string, data: string) {
+    insert(collection: string, data: string, resolve?: any) {
         
         MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
+            if (err) { 
+                return err;
+            }
             const db: MongoClient.Db = client.db(dbName);
             db.collection(collection).insertOne( data );
-            return;
-        })
+            resolve();
+        }) 
         
     }
 
@@ -55,7 +64,14 @@ export class DatabaseService {
 
     }
 
-    delete() {
-
+    delete(collection: string, criteriaValue: string, resolve: any) {
+        MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
+            if (err) { 
+                return err;
+            }
+            const db: MongoClient.Db = client.db(dbName);
+            db.collection(collection).deleteOne({ '_id': new ObjectId(criteriaValue) });
+            resolve();
+        })
     }
 }

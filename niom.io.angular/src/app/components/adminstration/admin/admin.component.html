@@ -1,7 +1,7 @@
 <section id="grid-layout">
-    <section id="top-bar">
-    <img id="site-logo" src='../../../assets/img/niom_sharp.png'>
-    <img id="triple-stack-menu" src='../../../../assets/img/round-menu-black-36/1x/round_menu_black_36dp.png'/>
+  <section id="top-bar">
+    <div id="site-logo"><img class="site-logo" src='../../../assets/img/malikiah_white_flat_logo.png'></div>
+    <img id="triple-stack-menu" src='../../../../assets/img/round-menu-black-36/1x/round_menu_black_36dp.png' (click)="sideBar()"/>
   </section>
   <section id="side-bar">
     <ul>
@@ -17,6 +17,9 @@
     </ul>
   </section>
   <section id="content-container">
+    <!--app-loading *ngIf="isLoading; else router"></app-loading-->
+
     <router-outlet></router-outlet>
+
   </section>
 </section>

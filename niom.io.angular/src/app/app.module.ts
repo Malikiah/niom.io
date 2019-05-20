@@ -25,6 +25,7 @@ import { UsersComponent } from './components/adminstration/admin/components/user
 import { PagesComponent } from './components/adminstration/admin/components/pages/pages.component';
 import { CreatePageComponent } from './components/adminstration/admin/components/pages/create-page/create-page.component';
 import { CreateUserComponent } from './components/adminstration/admin/components/users/create-user/create-user.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CreateUserComponent } from './components/adminstration/admin/components
     UsersComponent,
     PagesComponent,
     CreatePageComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

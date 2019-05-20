@@ -19,7 +19,7 @@ export class PagesComponent implements OnInit {
 
   ngOnInit() {
     new Promise((resolve, reject) => {
-      this.adminService.getUsers(resolve);
+      this.adminService.getPages(resolve);
     })
     .then(
       (pages: any) => { this.pages = pages; }

@@ -4,8 +4,8 @@
 }
 
 
-input[type="text"]:nth-child(2) {
-    margin-bottom: 20px ;
+#portfolio-input input {
+    margin-bottom: 10px ;
 }
 
 textarea { 

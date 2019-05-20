@@ -8,19 +8,24 @@ const dbName = 'niom';
 class DatabaseService {
     constructor() {
     }
-    find(resolve, collection, criteria, criteriaValue) {
+    find(resolve, collection, criteria, criteriaValue, findAll) {
         MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+            if (err) {
+                return err;
+            }
             const db = client.db(dbName);
             if (criteria === '_id') {
                 db.collection(collection).findOne({ '_id': new mongodb_1.ObjectId(criteriaValue) }, (err, collectionData) => {
-                    console.log(collectionData);
                     resolve(collectionData);
                 });
             }
             else if (!criteria) {
                 db.collection(collection).find().toArray((err, collectionData) => {
-                    console.log('collection');
-                    console.log(collectionData);
+                    resolve(collectionData);
+                });
+            }
+            else if (findAll) {
+                db.collection(collection).find({ [criteria]: criteriaValue }).toArray((err, collectionData) => {
                     resolve(collectionData);
                 });
             }
@@ -31,16 +36,27 @@ class DatabaseService {
             }
         });
     }
-    insert(collection, data) {
+    insert(collection, data, resolve) {
         MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+            if (err) {
+                return err;
+            }
             const db = client.db(dbName);
             db.collection(collection).insertOne(data);
-            return;
+            resolve();
         });
     }
     update() {
     }
-    delete() {
+    delete(collection, criteriaValue, resolve) {
+        MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+            if (err) {
+                return err;
+            }
+            const db = client.db(dbName);
+            db.collection(collection).deleteOne({ '_id': new mongodb_1.ObjectId(criteriaValue) });
+            resolve();
+        });
     }
 }
 exports.DatabaseService = DatabaseService;

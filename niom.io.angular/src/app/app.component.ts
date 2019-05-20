@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   title = 'niom';
   notification;
   isLoggedin;
-  isLoading;
   profile;
   banner;
 
@@ -40,7 +39,6 @@ ngOnInit() {
   }
   this.notificationService.newNotification.subscribe( notification => this.notification = notification );
   this.loggedInService.newLogin.subscribe( isLoggedin => this.isLoggedin = isLoggedin );
-  this.loadingService.newLoadingStatus.subscribe( isLoading => this.isLoading = isLoading );
   this.userService.newProfile.subscribe( profile => this.profile = profile);
 
 }

@@ -1,12 +1,13 @@
 import * as express from "express";
 import { Router, Request, Response, NextFunction } from 'express';
-import * as http from 'http';
+import * as request from 'request';
 
 import { DNSController, IpDataInterface } from '../../controllers/dns.controller';
 import { UserService, DatabaseService } from '../../services';
 import { AuthRouter } from './auth-router.module';
 import { UserInterface } from "../../dependencies";
 import { AdminRouter } from "./admin-router.module";
+import { Http2ServerRequest } from "http2";
 
 
 
@@ -59,5 +60,23 @@ export const MainRouter = (app: express.Application ) => {
         
 
     });
+
+    app.get('/portfolio', (req: Request, res: Response, next: NextFunction) => {
+        new Promise ((resolve, reject) => {
+            databaseService.find(resolve, 'pages', 'type', 'portfolio', true);
+        })
+        .then(
+            (portfolio: any) => { 
+                portfolio.forEach((dataPoint: any) => {
+                    request.post({url:'https://api.instagram.com/v1/users/self/?access_token=' + dataPoint.accessToken }, (err, res: request.Response, body) => {
+                        console.log(res.body);
+                    });
+                    
+                })
+             }
+        ) .catch((err) => { res.status(500).send(); })
+        
+        
+    })
 
 }

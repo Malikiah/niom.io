@@ -13,7 +13,7 @@ p {
     top: 15px;
     transition: .3s;
     filter: invert(100%);
-    
+    user-select: none;
     pointer-events: none;
 }
 

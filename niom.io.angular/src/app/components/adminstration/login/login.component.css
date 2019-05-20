@@ -40,3 +40,14 @@ section {
     margin: 10px 0 0 10px;
 } #register-button a:hover { cursor: pointer; color: rgb(0, 178, 190); }
 #register-button a { text-decoration: none; color: black; }
+
+#site-logo {
+    margin: 30px;
+}
+
+#site-logo img {
+    display: block;
+    height: 60.75px; width: 63.5px;
+    margin: auto auto;
+    cursor: pointer;
+}

@@ -4,13 +4,11 @@
     display: block;
     top: 50px; left: 20%;
     padding-right: 20px;
-    height: 60px;
    
 }
 #site-logo img { 
     display: block;
-    filter: invert(100%);
-    height: 41px; width: 163px;
+    height: 48.6px; width: 51.8px;
     margin: auto auto;
     cursor: pointer;
 }

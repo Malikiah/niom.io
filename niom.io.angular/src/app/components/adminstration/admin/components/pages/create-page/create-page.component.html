@@ -1,28 +1,35 @@
 <section class="content-margin">
-  <form id="create-page-form" #createPageForm="ngForm" (ngSubmit)="this.userService.contactEmail(create-pageForm)">
+  <form id="create-page-form" #createPageForm="ngForm" (ngSubmit)="this.adminService.createPage(createPageForm)">
     <section id="new-page-header">
       <h1>New Page</h1>
 
       <label>Select Type</label><br/>
-        <select id="pageType" name="type" ngModel required #subject="ngModel"> 
-            <option value="post" selected>post</option> 
+        <select id="pageType" name="type" ngModel required #type="ngModel"> 
+            <option value="post" selected="selected">post</option> 
             <option value="portfolio">portfolio</option> 
         </select><br/>
         <br/>
-        <label>Title</label><br/>
-        <input id="title" type="text" name="title" placeholder="Title" ngModel required #title="ngModel">
-
+        <div *ngIf="pageType" >
+          <label>Title</label><br/>
+          <input id="title" type="text" name="title" placeholder="Title" ngModel required #title="ngModel">
+        </div>
     </section>
 
-    <section  id="portfolio-type" *ngIf="pageType != 'portfolio';else portfolio">
+    <section *ngIf="pageType === 'post'">
         <textarea name="body" ngModel required #body="ngModel"> </textarea>
     </section>
     
 
-    <ng-template #portfolio>
-        <input name="client_id" type="text" placeholder="client_id"/>
-        <input name="site-url" type="text" placeholder="site URL"/>
-    </ng-template>
+      <div *ngIf="pageType === 'portfolio'" id="portfolio-input">
+        <input name="clientId" type="text" placeholder="client_id" ngModel required #clientId="ngModel"/>
+        <input name="clientSecret" type="text" placeholder="client private key" ngModel required #clientSecret="ngModel"/>
+        <input name="email" type="text" placeholder="email" ngModel required #email="ngModel"/>
+        <input name="instagramUrl" type="text" placeholder="instagram" ngModel required #instagramUrl="ngModel"/>
+        <input name="facebookUrl" type="text" placeholder="facebook" ngModel required #facebookUrl="ngModel"/>
+        <input name="pintrestUrl" type="text" placeholder="pintrest" ngModel required #pintrestUrl="ngModel"/>
+        <input name="siteUrl" type="text" placeholder="website" ngModel required #siteUrl="ngModel"/>
+      </div>
+
 
     <input type="submit" value="Create">
   </form>

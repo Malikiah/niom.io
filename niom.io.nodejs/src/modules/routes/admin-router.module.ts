@@ -11,7 +11,7 @@ const adminService: AdminService = new AdminService();
 
 export const AdminRouter = (app: express.Application) => { 
 
-    app.get('/users', (req: Request, res: Response, next: NextFunction) => {
+    app.get('/admin/users', (req: Request, res: Response, next: NextFunction) => {
         new Promise ((resolve, reject) => {
             userService.checkJWT(req, res, next, resolve);
         })
@@ -25,7 +25,7 @@ export const AdminRouter = (app: express.Application) => {
                     })
                     .then(
                         (users: any) => { res.status(200).send(users); }
-                        )
+                        ) .catch((err) => { res.sendStatus(500); })
 
                 } else {
                     res.status(401).send();
@@ -33,7 +33,7 @@ export const AdminRouter = (app: express.Application) => {
             })
     })
 
-    app.get('/pages', (req: Request, res: Response, next: NextFunction) => {
+    app.get('/admin/pages', (req: Request, res: Response, next: NextFunction) => {
         new Promise ((resolve, reject) => {
             userService.checkJWT(req, res, next, resolve);
         })
@@ -47,7 +47,8 @@ export const AdminRouter = (app: express.Application) => {
                     })
                     .then(
                         (pages: any) => { res.status(200).send(pages); }
-                        )
+                        ) .catch((err) => { res.sendStatus(500); })
+                    
 
                 } else {
                     res.status(401).send();
@@ -55,4 +56,54 @@ export const AdminRouter = (app: express.Application) => {
             } 
         )
     })
+
+    app.post('/admin/create-page', (req: Request, res: Response, next: NextFunction) => {
+        console.log(req.body);
+        new Promise ((resolve, reject) => {
+            userService.checkJWT(req, res, next, resolve);
+        })
+        .then(
+            (decodedJWT: UserInterface) => {
+
+                if(decodedJWT.role === "admin") {
+                    
+                    new Promise ((resolve, reject) => {
+                        databaseService.insert('pages', req.body, resolve);
+                    })
+                    .then(
+                        () => { console.log('stuff'); res.status(200).send(); }
+                        ) .catch((err) => { res.sendStatus(500); })
+
+                } else {
+                    res.status(401).send();
+                }
+            } 
+        )
+        
+    })
+
+    app.post('/admin/delete', (req, res, next) => {
+        
+        new Promise ((resolve, reject) => {
+            userService.checkJWT(req, res, next, resolve);
+        })
+        .then(
+            (decodedJWT: UserInterface) => {
+
+                if(decodedJWT.role === "admin") {
+                    
+                    new Promise ((resolve, reject) => {
+                        databaseService.delete(req.body.collection, req.body.criteriaValue, resolve);
+                    })
+                    .then(
+                        () => { res.status(200).send(); }
+                        ) .catch((err) => { res.sendStatus(500); })
+
+                } else {
+                    res.status(401).send();
+                }
+            } 
+        )
+        })
+    
 }

@@ -1,7 +1,7 @@
 
 <section class="wide-content-margin">
   
-  <div><input type="text"/><input type="submit" value="Create" routerLink="/admin/users/create-user"/></div>
+  <div><input type="text"/> <div class="create-button" routerLink="/admin/pages/create-user">Create</div></div>
   
   <table class="admin-table-list">
     <tr class="table-header">
@@ -9,12 +9,16 @@
       <td>name</td>
       <td>email address</td>
       <td>privilege</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr *ngFor="let user of users" class="table-content">
       <td>{{user._id}}</td>
       <td>{{user.firstName}} {{user.lastName}}</td>
       <td>{{user.email}}</td>
       <td>{{user.role}}</td>
+      <td class="edit-button table-button">edit</td>
+      <td class="delete-button table-button" (click)="this.adminService.delete($event, 'pages')">delete</td>
     </tr>
   </table>
 </section>
