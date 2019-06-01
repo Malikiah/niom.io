@@ -41,6 +41,7 @@ section {
 } #register-button a:hover { cursor: pointer; color: rgb(0, 178, 190); }
 #register-button a { text-decoration: none; color: black; }
 
+
 #site-logo {
     margin: 30px;
 }
@@ -50,4 +51,10 @@ section {
     height: 60.75px; width: 63.5px;
     margin: auto auto;
     cursor: pointer;
+}
+
+.login-logo {
+    text-align: center;
+    color: black;
+    margin: 50px 0 50px 0;
 }

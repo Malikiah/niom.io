@@ -12,12 +12,28 @@
     src: url(./assets/font/code/CODE_Light.otf);
 }
 @font-face {
-font-family: Roboto;
-src: url(./assets/font/roboto/Roboto-Light.ttf);
+    font-family: Roboto;
+    src: url(./assets/font/roboto/Roboto-Light.ttf);
 }
 @font-face {
-font-family: ModernSans;
-src: url(./assets/font/modern_sans/ModernSans-Light.otf);
+    font-family: ModernSans;
+    src: url(./assets/font/modern_sans/ModernSans-Light.otf);
+}
+@font-face {
+    font-family: qardoos;
+    src: url(./assets/font/qardoos/Qardoos-Personal-Use.otf);
+}
+@font-face {
+    font-family: OptimusPrinceps;
+    src:url(./assets/font/OptimusPrinceps/OptimusPrinceps.ttf);
+}
+@font-face {
+    font-family: alien_league;
+    src:url(./assets/font/alien_league/alienleague.ttf);
+}
+@font-face {
+    font-family: roadtest;
+    src:url(./assets/font/roadtest/RoadTest.ttf);
 }
 
 html, body {
@@ -135,17 +151,21 @@ label {
     font-size: 14px;
 }
 
-select {
-    
-}
+
 
 /* ----- Global Classes ----- */
 
 .site-logo {
     display: block;
-    height: 48.6px; width: 51.8px;
-    margin: auto auto;
     cursor: pointer;
+    font-family: alien_league;
+    color: white;
+    font-size: 50px;
+}
+
+.home-logo {
+    height: 60px; width: fit-content;
+    margin: 50px 0 0px 20%;
 }
 
 .content-margin {
@@ -206,7 +226,7 @@ select {
 }
   
 @media(max-width: 650px) {
-
+    .home-logo { margin: 50px 0 0px 50px; }
     .content-margin { display: grid; grid-column: 1/6; padding: 100px 12px 100px 12px; }
     .wide-content-margin { display: grid; grid-column: 1/6; padding: 100px 12px 100px 12px; }
     input[type=text], input[type=password] {  min-width: 300px; }
@@ -222,6 +242,7 @@ select {
 
 @keyframes arrow_bounce {
     0% { bottom: 0px; }
+    20% { bottom: 0px; }
     40% { bottom: -5px; }
     50% { bottom: 0px; }
     65% { bottom: -5px; }

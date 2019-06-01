@@ -1,1 +1,1 @@
-{"version":3,"file":"router.module.js","sourceRoot":"","sources":["../../src/modules/router.module.ts"],"names":[],"mappings":";;AACA,oEAAyD;AAKzD,MAAa,YAAY;IACrB,gBACK,CAAC;IACC,MAAM,CAAC,GAAwB;QAElC,+BAAU,CAAC,GAAG,CAAC,CAAC;IAEpB,CAAC;CACJ;AARD,oCAQC"}
+{"version":3,"file":"router.module.js","sourceRoot":"","sources":["../../src/modules/router.module.ts"],"names":[],"mappings":";;AACA,oEAAyD;AAIzD,MAAa,YAAY;IACrB,gBACK,CAAC;IACC,MAAM,CAAC,GAAwB;QAElC,+BAAU,CAAC,GAAG,CAAC,CAAC;IAEpB,CAAC;CACJ;AARD,oCAQC"}

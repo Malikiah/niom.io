@@ -1,6 +1,5 @@
 import * as express from 'express';
 import { MainRouter } from './routes/main-router.module';
-import { UserService } from '../services/user/user.services';
 
 
 

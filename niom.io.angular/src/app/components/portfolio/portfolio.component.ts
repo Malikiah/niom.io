@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PageService } from '../../services/page/page.service';
+import { PortfolioInterface } from '../../models/page.models';
 
 @Component({
   selector: 'app-portfolio',
@@ -9,12 +10,22 @@ import { PageService } from '../../services/page/page.service';
 })
 export class PortfolioComponent implements OnInit {
 
+  portfolio: PortfolioInterface;
+
   constructor(
     private pageService: PageService
   ) { }
 
   ngOnInit() {
-    this.pageService.getPortfolio();
+    new Promise ((resolve, reject) => {
+      this.pageService.getPortfolio(resolve);
+    })
+    .then(
+      (portfolio: PortfolioInterface) => {
+        this.portfolio = portfolio;
+      }
+    )
+    
   }
 
 }

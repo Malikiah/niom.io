@@ -8,7 +8,8 @@ import {
   UsersComponent,
   CreateUserComponent,
   PagesComponent,
-  CreatePageComponent
+  CreatePageComponent,
+  InstagramValidationComponent
 } from './components/index';
 
 import {
@@ -18,6 +19,7 @@ import {
 
 const routes: Routes = [
   { path:'', component: MainComponent },
+  { path:'validate-instagram', component: InstagramValidationComponent },
   { path:'login', component: LoginComponent },
   { path:'admin', component: AdminComponent, 
     canActivate: [ 

@@ -46,7 +46,15 @@ class DatabaseService {
             resolve();
         });
     }
-    update() {
+    update(_id, collection, criteria, criteriaValue, resolve) {
+        MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+            if (err) {
+                return err;
+            }
+            const db = client.db(dbName);
+            db.collection(collection).updateOne({ '_id': new mongodb_1.ObjectId(_id) }, { $set: { criteria: criteriaValue } });
+            resolve();
+        });
     }
     delete(collection, criteriaValue, resolve) {
         MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {

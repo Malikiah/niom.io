@@ -5,6 +5,7 @@ export { LoginComponent } from "./adminstration/login/login.component";
 export { AboutComponent } from "./about/about.component";
 export { ServicesComponent } from "./services/services.component";
 export { PortfolioComponent } from "./portfolio/portfolio.component";
+export { InstagramValidationComponent } from './instagram-validation/instagram-validation.component';
 
 
 export { AdminComponent } from "./adminstration/admin/admin.component";

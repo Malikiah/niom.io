@@ -26,6 +26,7 @@ import { PagesComponent } from './components/adminstration/admin/components/page
 import { CreatePageComponent } from './components/adminstration/admin/components/pages/create-page/create-page.component';
 import { CreateUserComponent } from './components/adminstration/admin/components/users/create-user/create-user.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { InstagramValidationComponent } from './components/instagram-validation/instagram-validation.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { PostsComponent } from './components/posts/posts.component';
     PagesComponent,
     CreatePageComponent,
     CreateUserComponent,
-    PostsComponent
+    PostsComponent,
+    InstagramValidationComponent
   ],
   imports: [
     BrowserModule,

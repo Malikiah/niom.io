@@ -60,8 +60,15 @@ export class DatabaseService {
         
     }
 
-    update() {
-
+    update(_id: string, collection: string, criteria: string, criteriaValue: string, resolve?: any) {
+        MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
+            if(err) {
+                return err;
+            }
+            const db: MongoClient.Db = client.db(dbName);
+            db.collection(collection).updateOne({'_id': new ObjectId(_id)}, {$set: {criteria: criteriaValue}});
+            resolve();
+        })
     }
 
     delete(collection: string, criteriaValue: string, resolve: any) {

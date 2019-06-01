@@ -18,11 +18,11 @@ export class PageService {
 
   }
 
-  getPortfolio() {
+  getPortfolio(resolve) {
     this.httpClient.get(window.location.protocol + '//' + window.location.hostname + ':3000/portfolio')
     .toPromise()
     .then(
-      (portfolio: PortfolioInterface) => { console.log(portfolio); }
+      (portfolio: PortfolioInterface) => { console.log(portfolio); resolve(portfolio)}
     ) .catch((err) => {  })
   }
 }

@@ -46,7 +46,7 @@ export const AdminRouter = (app: express.Application) => {
                         databaseService.find(resolve, 'pages');
                     })
                     .then(
-                        (pages: any) => { res.status(200).send(pages); }
+                        (pages: any) => { console.log(pages); res.status(200).send(pages); }
                         ) .catch((err) => { res.sendStatus(500); })
                     
 
@@ -71,7 +71,7 @@ export const AdminRouter = (app: express.Application) => {
                         databaseService.insert('pages', req.body, resolve);
                     })
                     .then(
-                        () => { console.log('stuff'); res.status(200).send(); }
+                        () => { res.status(200).send(); }
                         ) .catch((err) => { res.sendStatus(500); })
 
                 } else {

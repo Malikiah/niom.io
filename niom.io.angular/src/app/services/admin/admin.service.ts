@@ -55,8 +55,8 @@ export class AdminService {
         break;
       case 'portfolio':
         
-        if(createForm.value.title && createForm.value.clientId && createForm.value.clientSecret && createForm.value.email || createForm.value.title && createForm.value.siteUrl) {
-          createForm.value.email = createForm.value.email.toLowerCase();
+        if(createForm.value.title && createForm.value.instagramUsername || createForm.value.title && createForm.value.siteUrl) {
+          
           this.httpClient.post(window.location.protocol + '//' + window.location.hostname + ':3000/admin/create-page', createForm.value)
             .toPromise()
             .then(
@@ -64,7 +64,7 @@ export class AdminService {
                 if(createForm.value.clientId) {
                   if(confirm('Do you want to validate now?')) {
                     location.href='https://api.instagram.com/oauth/authorize/?client_id=' + createForm.value.clientId + '&redirect_uri=' 
-                    + window.location.protocol + '//' + window.location.hostname + ':4200' + '&response_type=code';
+                    + window.location.protocol + '//' + window.location.hostname + '/validate-instagram&response_type=token';
                   } else {
                     console.log('send email');
                   }

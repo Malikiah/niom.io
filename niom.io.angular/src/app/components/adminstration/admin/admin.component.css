@@ -41,14 +41,6 @@
     background:white;
 }
 
-#site-logo {
-    position: relative;
-    display: block;
-    float: left;
-    height: fit-content; width: fit-content; 
-    transform: translate(-50%, 0%);
-    margin: auto 0 auto 100px;
-}
 
 #triple-stack-menu {
     display: block;
@@ -59,6 +51,13 @@
     cursor: pointer;
 }
 
+.admin-logo {
+    display: block;
+    text-align: center;
+    padding: none !important;
+    line-height: 50px; width: 200px;
+    font-size: 40px;
+}
 
 @media(max-width: 1200px) {
     #navigation-menu {

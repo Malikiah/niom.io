@@ -30,7 +30,7 @@ exports.AdminRouter = (app) => {
                 new Promise((resolve, reject) => {
                     databaseService.find(resolve, 'pages');
                 })
-                    .then((pages) => { res.status(200).send(pages); }).catch((err) => { res.sendStatus(500); });
+                    .then((pages) => { console.log(pages); res.status(200).send(pages); }).catch((err) => { res.sendStatus(500); });
             }
             else {
                 res.status(401).send();
@@ -47,7 +47,7 @@ exports.AdminRouter = (app) => {
                 new Promise((resolve, reject) => {
                     databaseService.insert('pages', req.body, resolve);
                 })
-                    .then(() => { console.log('stuff'); res.status(200).send(); }).catch((err) => { res.sendStatus(500); });
+                    .then(() => { res.status(200).send(); }).catch((err) => { res.sendStatus(500); });
             }
             else {
                 res.status(401).send();

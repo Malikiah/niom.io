@@ -1,0 +1,42 @@
+section ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+li {
+    display: grid;
+    margin: 0 10px 0 10px;
+}
+
+li img {
+    transition: .3s;
+    position: relative;
+    display: block;
+    margin: auto auto;
+    height: 320px; width: 320px;
+    background: no-repeat;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+li img:hover {
+    transform: scale(1.02);
+}
+
+
+h3 {
+    margin: 0; padding: 0;
+    text-align: center;
+}
+
+@media(max-width: 1200px) {
+    section ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 650px) {
+    section ul {
+        grid-template-columns: 1fr;
+    }
+}

@@ -44,10 +44,16 @@
     display: grid;
     position: relative;
     height: 100vh;
-    background: url('../../../assets/img/nebula_galaxy_wallpaper_014.jpg');
-
+    overflow: hidden;
 
 }
+
+#banner-image {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
 #banner-arrow {
     position: absolute;
     bottom: 0; right: 50%;
@@ -121,6 +127,21 @@ app-about {
 }
  
  /* ----- Media Queries ----- */
+
+@media(max-width: 1600px) {
+    #banner-image {
+        width: 1920px;
+    }
+    #banner-image {
+        transform: translate(-30%);
+    }
+}
+
+@media(max-width: 1000px) {
+    #banner-image {
+        transform: translate(-50%);
+    }
+}
 
  @media(max-width: 1200px) {
     #site-logo {
